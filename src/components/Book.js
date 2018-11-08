@@ -1,20 +1,40 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Book extends Component {
+    static propTypes = {
+        book: PropTypes.object,
+        onChangeBookShelf: PropTypes.func.isRequired,
+    }
+
+    options = [
+        { key: 'currentlyReading', title: 'Currently Reading' },
+        { key: 'wantToRead', title: 'Want to Read' },
+        { key: 'read', title: 'Read' },
+        { key: 'none', title: 'None' }
+    ]
+
+    handleShelfChange = (e) => {
+        e.preventDefault()
+        const { book } = this.props
+        book.shelf = e.target.value
+        this.props.onChangeBookShelf(book)
+    }
+
     render() {
-        const { title, authors, imageLinks} = this.props.book
-        const { smallThumbnail, thumbnail } = imageLinks
+        const { title, authors, imageLinks, shelf } =  this.props.book
+        const { smallThumbnail } = imageLinks
+
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${smallThumbnail})` }}></div>
                     <div className="book-shelf-changer">
-                        <select>
+                        <select value={shelf} onChange={this.handleShelfChange}>
                             <option value="move" disabled>Move to...</option>
-                            <option value="currentlyReading">Currently Reading</option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
+                            {this.options.map(({ key, title }) => (
+                                <option key={key} value={key}>{title}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
