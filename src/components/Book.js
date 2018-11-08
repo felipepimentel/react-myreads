@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-    Card,  
+    Card,
     CardBody,
-    CardTitle, 
+    CardTitle,
     CardSubtitle
 } from 'reactstrap';
 
@@ -29,7 +29,7 @@ class Book extends Component {
 
     render() {
         const { title, authors, imageLinks, shelf } = this.props.book
-        const { smallThumbnail } = imageLinks
+        const smallThumbnail = imageLinks ? imageLinks.smallThumbnail : ''
 
         return (
             <div>
