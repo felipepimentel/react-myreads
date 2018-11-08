@@ -33,7 +33,7 @@ In this application, the main page displays a list of "shelves" (i.e. categories
 
 Application is created to help you to managing your personal library and stack of books. There is 7 books as default but:
 
-- You can search for new books in the `/search` page or click **+** button on the right bottom corner.
+- You can search for new books in the `/search` page or click **Buscar Livros**.
 
 - Use menu below book cover to select shelf **Reading**, **Want to**, **Read** to put the book on right one
 
