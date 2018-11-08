@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { search } from '../utils/BooksAPI'
 import Book from '../components/Book'
+import { DebounceInput } from 'react-debounce-input';
 import PropTypes from 'prop-types'
 import {
     Row,
@@ -67,7 +68,9 @@ class Search extends Component {
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Input
+                                <Input tag={DebounceInput}
+                                    minLength={2}
+                                    debounceTimeout={500}
                                     type="text"
                                     placeholder="Search by title or author"
                                     onChange={(event) => this.updateQuery(event.target.value)}

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Book from '../components/Book'
 import PropTypes from 'prop-types'
 import { Col, Row, CardDeck } from 'reactstrap';
 
-class Shelf extends Component {
+class Shelf extends PureComponent {
     static propTypes = {
         books: PropTypes.array.isRequired,
         title: PropTypes.string,

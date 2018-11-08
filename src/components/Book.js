@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import {
     Card,
@@ -7,7 +7,7 @@ import {
     CardSubtitle
 } from 'reactstrap';
 
-class Book extends Component {
+class Book extends PureComponent {
     static propTypes = {
         book: PropTypes.object,
         onChangeBookShelf: PropTypes.func.isRequired,

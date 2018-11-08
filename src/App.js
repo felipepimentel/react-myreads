@@ -29,13 +29,9 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    getAll().then((books) => {
-      this.setState(() => ({
-        books,
-        loading: false
-      }))
-    })
+  async componentDidMount() {
+    const books = await getAll();
+    this.setState(() => ({ books, loading: false }))
   }
 
   render() {
