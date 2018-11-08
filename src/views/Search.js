@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import { search } from '../utils/BooksAPI'
 import Book from '../components/Book'
 import PropTypes from 'prop-types'
+import {
+    Row,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    CardDeck
+} from 'reactstrap';
+
 
 class Search extends Component {
     static propTypes = {
@@ -28,18 +37,18 @@ class Search extends Component {
                     return []
 
                 const myBooks = this.props.books
-                books.map((book) => {
+                return books.map((book) => {
                     const foundBook = myBooks.find((myBook) => myBook.id === book.id)
                     book.shelf = foundBook ? foundBook.shelf : 'none'
+                    return book;
                 })
-                return books
             })
             .then((books) => {
                 this.setState(() => ({
                     books
                 }))
-            }).catch((err) => {
-                this.clearBooks()
+            }).catch(() => {
+                this.clearBooks();
             })
     }
 
@@ -48,33 +57,42 @@ class Search extends Component {
     }
 
     render() {
-        const { query, books } = this.state
+        const { books } = this.state
         const { onChangeBookShelf } = this.props
 
         return (
-            <div className="search-books">
-                <div className="search-books-bar">
-                    <div className="search-books-input-wrapper">
-                        <input
-                            type="text"
-                            placeholder="Search by title or author"
-                            onChange={(event) => this.updateQuery(event.target.value)}
-                            ref={(input) => {
-                                this.searchInput = input;
-                            }}
-                        />
-                    </div>
-                </div>
-                <div className="search-books-results">
-                    <ol className="books-grid">
+            <React.Fragment>
+                <h1 className="mt-5">Busca de Livros</h1>
+                <Row>
+                    <Col>
+                        <Form>
+                            <FormGroup>
+                                <Input
+                                    type="text"
+                                    placeholder="Search by title or author"
+                                    onChange={(event) => this.updateQuery(event.target.value)}
+                                    ref={(input) => {
+                                        this.searchInput = input;
+                                    }}
+                                />
+                            </FormGroup>
+                        </Form>
 
-                        {books.length > 0 && books.map((book) => (
-                            <li key={book.id}><Book book={book} onChangeBookShelf={onChangeBookShelf} /></li>
-                        ))}
 
-                    </ol>
-                </div>
-            </div>
+                        <div className="search-books-results">
+                            <CardDeck>
+
+                                {books.length > 0 && books.map((book) => (
+                                    <Book key={book.id} book={book} onChangeBookShelf={onChangeBookShelf} />
+                                ))}
+
+                            </CardDeck>
+                        </div>
+
+
+                    </Col>
+                </Row>
+            </React.Fragment>
         )
     }
 }

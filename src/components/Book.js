@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {
+    Card,  
+    CardBody,
+    CardTitle, 
+    CardSubtitle
+} from 'reactstrap';
 
 class Book extends Component {
     static propTypes = {
@@ -22,24 +28,28 @@ class Book extends Component {
     }
 
     render() {
-        const { title, authors, imageLinks, shelf } =  this.props.book
+        const { title, authors, imageLinks, shelf } = this.props.book
         const { smallThumbnail } = imageLinks
 
         return (
-            <div className="book">
-                <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${smallThumbnail})` }}></div>
-                    <div className="book-shelf-changer">
-                        <select value={shelf} onChange={this.handleShelfChange}>
-                            <option value="move" disabled>Move to...</option>
-                            {this.options.map(({ key, title }) => (
-                                <option key={key} value={key}>{title}</option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-                <div className="book-title">{title}</div>
-                <div className="book-authors">{authors}</div>
+            <div>
+                <Card>
+                    <CardBody>
+                        <CardTitle>{title}</CardTitle>
+                        <CardSubtitle>{authors}</CardSubtitle>
+                    </CardBody>
+                    <div className="book-cover" style={{ width: 198, height: 193, backgroundImage: `url(${smallThumbnail})` }}></div>
+                    <CardBody>
+                        <div className="book-shelf-changer">
+                            <select value={shelf} onChange={this.handleShelfChange}>
+                                <option value="move" disabled>Move to...</option>
+                                {this.options.map(({ key, title }) => (
+                                    <option key={key} value={key}>{title}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </CardBody>
+                </Card>
             </div>
         )
     }

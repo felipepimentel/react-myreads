@@ -1,10 +1,15 @@
 import React from 'react'
+import { Row, Col } from 'reactstrap';
 
 const Footer = () => {
     const year = new Date().getFullYear()
     return (
-        <footer className="footer-container">
-            <span>&copy; {year} - Felipe Pimentel</span>
+        <footer>
+            <Row>
+                <Col sm="12" md="12" lg="12">
+                    <p className="align-self-center">&copy; {year}. Felipe Pimentel</p>
+                </Col>
+            </Row>
         </footer>
     );
 }

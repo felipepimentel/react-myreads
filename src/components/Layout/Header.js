@@ -1,18 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {
+    Navbar,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink
+} from 'reactstrap';
 
 const Header = () => {
     return (
         <header>
-            <nav>
-                <div className="list-books-title">
-                    <h1>MyReads</h1>
-                </div>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="search">Search</Link></li>
-                </ul>
-            </nav>
+
+            <Navbar className="navbar navbar-expand-md navbar-dark bg-dark">
+                <NavbarBrand href="/">My Reads</NavbarBrand>
+
+                <Nav navbar>
+                    <NavItem>
+                        <NavLink tag={Link} to="/">Home</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={Link} to="/search">Buscar Livros</NavLink>
+                    </NavItem>
+                </Nav>
+
+            </Navbar>
+
         </header>
     );
 }

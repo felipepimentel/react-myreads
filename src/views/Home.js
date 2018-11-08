@@ -11,15 +11,18 @@ class Home extends Component {
     render() {
         const shelfs = aggregateMyBooks(this.props.books);
         return (
-            <div className="list-books-content">
-                <ul>
+            <React.Fragment>
+                <h1 className="mt-5">Meus Livros</h1>
+                <div className="list-books-content">
+
                     {[...shelfs].map(([key, value]) =>
-                        <li key={key}>
-                            <Shelf title={value.title} books={value.books} onChangeBookShelf={this.props.onChangeBookShelf} />
-                        </li>
+
+                        <Shelf key={key} title={value.title} books={value.books} onChangeBookShelf={this.props.onChangeBookShelf} />
+
                     )}
-                </ul>
-            </div>
+
+                </div>
+            </React.Fragment>
         )
     }
 }

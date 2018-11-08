@@ -5,15 +5,13 @@ import Footer from './Footer'
 class LayoutDefault extends Component {
     render() {
         return (
-            <div className="wrapper">
+            <React.Fragment>
                 <Header />
-
-                <section className="section-container">
-                    { this.props.children }
-                </section>
-
+                <main role="main" className="container">
+                    {this.props.children}
+                </main>
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }
