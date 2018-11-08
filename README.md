@@ -11,16 +11,6 @@
 
 ## How to Run Application
 
-#### Possible choices:
-
-**1**. You can run a **[live demo](https://dominicom.github.io/react-project-myreads/)** deployed with `gh-pages`
-
-**2**. Or run it on your local machine:
-* download or clone the repository
-* next follow these [instructions](#instructions)
-
-
-
 ### Instructions
 **Running application on local machine**
 
